@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XVisualizer", "XVisualizer.csproj", "{9B8B69A0-8F08-4AB2-B78F-2D3817C69BFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XVisualizer", "XVisualizer\XVisualizer.csproj", "{9B8B69A0-8F08-4AB2-B78F-2D3817C69BFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{F2BBE507-6BB9-4573-8DD6-2D219248D39B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9B8B69A0-8F08-4AB2-B78F-2D3817C69BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B8B69A0-8F08-4AB2-B78F-2D3817C69BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B8B69A0-8F08-4AB2-B78F-2D3817C69BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2BBE507-6BB9-4573-8DD6-2D219248D39B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2BBE507-6BB9-4573-8DD6-2D219248D39B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2BBE507-6BB9-4573-8DD6-2D219248D39B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2BBE507-6BB9-4573-8DD6-2D219248D39B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
