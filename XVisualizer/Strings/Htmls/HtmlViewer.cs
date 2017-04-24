@@ -8,7 +8,6 @@ namespace XVisualizer.Strings.Htmls
         public HtmlViewer()
         {
             InitializeComponent();
-
         }
 
         public override void SetContent(string html)

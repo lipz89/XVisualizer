@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq.Expressions;
 
 using Microsoft.VisualStudio.DebuggerVisualizers;
+
+using Newtonsoft.Json;
 
 using XVisualizer;
 using XVisualizer.Expressions;
@@ -61,21 +65,26 @@ namespace XCommonTest
 
         public static void TestString()
         {
-            //'\t', '\n', '\v', '\f', '\r', ' ', '\x0085', '\x00a0', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '​', '\u2028', '\u2029', '　', '﻿'
-            var js = "第一行\n\n第二行\r\r\n第三行\r第四行\n\n\r第五行";
-            js = "{a:[1,'\\uf556',\"\\uf535\\u6ff53\",{b:[],c:{},d:false,f:undefined,g:null,h:5.333}]}";
+            var tc = new StackTrace().ToString();
+            var lst = new List<object>();
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    lst.Add(new { text = i, value = new { message = tc } });
+            //}
 
-            //js = "<?xml version=\"1.0\"?>  <EFConnectionConfigInfo xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">    <DataSource>172.16.0.219</DataSource>      <Port>1521</Port>    <Database>DMSP</Database>    <IntgSecurity>false</IntgSecurity>    <PerSecurity>true</PerSecurity>    <UserId>629C81F71AA055C8</UserId>    <Password>629C81F71AA055C8</Password>    <expireTime>30</expireTime>    <DataProvider>oracle</DataProvider>  </EFConnectionConfigInfo>";
+            var js = JsonConvert.SerializeObject(lst);
+            js = "{a:{b:1},c:[1,0.5,\"12\"]}";
+            //Console.WriteLine(js.Length);
+            //VisualizerDevelopmentHost visualizerHost = new VisualizerDevelopmentHost(js, typeof(StringVisualizer));
+            //visualizerHost.ShowVisualizer();
 
-            //js = "sysdate";
+            using (StringForm form = new StringForm())
+            {
+                form.SetString(js);
+                form.ShowInTaskbar = false;
 
-            //js = js.Replace("\r", Environment.NewLine);
-            //js = js.Replace("\r\n\n", Environment.NewLine);
-            //js = js.Replace("\n", Environment.NewLine);
-            //js = js.Replace("\r\r\n", Environment.NewLine);
-
-            VisualizerDevelopmentHost visualizerHost = new VisualizerDevelopmentHost(js, typeof(StringVisualizer));
-            visualizerHost.ShowVisualizer();
+                form.ShowDialog();
+            }
         }
     }
 }

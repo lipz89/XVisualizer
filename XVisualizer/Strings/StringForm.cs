@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using XVisualizer.Strings.Htmls;
@@ -13,6 +14,8 @@ namespace XVisualizer.Strings
     {
         public string Value { get; set; }
         private List<ControlInfo> list = new List<ControlInfo>();
+        private string lastKey = "文本格式(*.txt)|*.txt";
+        private string newKey = String.Empty;
 
         public StringForm()
         {
@@ -47,20 +50,20 @@ namespace XVisualizer.Strings
 
         private void btnJson_Click(object sender, System.EventArgs e)
         {
-            CreateOrChange<JsonViewer>("json");
+            CreateOrChange<JsonViewer>("JSON", sender as Button);
         }
 
         private void btnXml_Click(object sender, System.EventArgs e)
         {
-            CreateOrChange<XmlViewer>("xml");
+            CreateOrChange<XmlViewer>("XML", sender as Button);
         }
 
         private void btnHtml_Click(object sender, EventArgs e)
         {
-            CreateOrChange<HtmlViewer>("html");
+            CreateOrChange<HtmlViewer>("HTML", sender as Button);
         }
 
-        private void CreateOrChange<T>(string key) where T : BaseViewer, new()
+        private void CreateOrChange<T>(string key, Button btn) where T : BaseViewer, new()
         {
             foreach (var it in list.Where(x => x.IsVisible && x.Key != key))
             {
@@ -78,6 +81,7 @@ namespace XVisualizer.Strings
                     {
                         Key = key,
                         Control = viewer,
+                        Button = btn
                     };
                 }
                 catch (Exception ex)
@@ -96,11 +100,15 @@ namespace XVisualizer.Strings
             control.IsVisible = !control.IsVisible;
             if (control.IsVisible)
             {
+                control.Button.Text = "Text";
                 ShowControl(control);
+                newKey = control.Key + "文件(*." + control.Key.ToLower() + ")|*." + control.Key.ToLower();
             }
             else
             {
+                control.Button.Text = control.Key;
                 HideControl(control);
+                newKey = string.Empty;
             }
         }
 
@@ -128,6 +136,27 @@ namespace XVisualizer.Strings
             label1.ForeColor = isError ? Color.Red : Color.Black;
             label1.Text = info;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var filters = lastKey;
+            if (!string.IsNullOrWhiteSpace(newKey))
+            {
+                filters += "|" + newKey;
+            }
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = filters;
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                using (var file = File.Create(sfd.FileName))
+                {
+                    using (var st = new StreamWriter(file))
+                    {
+                        st.Write(Value);
+                    }
+                }
+            }
+        }
     }
 
     class ControlInfo
@@ -135,5 +164,6 @@ namespace XVisualizer.Strings
         public BaseViewer Control { get; set; }
         public string Key { get; set; }
         public bool IsVisible { get; set; }
+        public Button Button { get; set; }
     }
 }
