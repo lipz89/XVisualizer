@@ -7,8 +7,8 @@
     <ProjectGuid>{F2BBE507-6BB9-4573-8DD6-2D219248D39B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Test</RootNamespace>
-    <AssemblyName>Test</AssemblyName>
+    <RootNamespace>Visualizer.Test</RootNamespace>
+    <AssemblyName>Visualizer.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -60,9 +60,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XVisualizer\XVisualizer.csproj">
-      <Project>{9b8b69a0-8f08-4ab2-b78f-2d3817c69bfc}</Project>
-      <Name>XVisualizer</Name>
+    <ProjectReference Include="..\ColorVisualizer\ColorVisualizer.csproj">
+      <Project>{47BC2292-FB18-44E9-9DF5-79EC9A5DF509}</Project>
+      <Name>ColorVisualizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExpressionVisualizer\ExpressionVisualizer.csproj">
+      <Project>{7DDE893B-09EE-402C-BEE7-6D9015887292}</Project>
+      <Name>ExpressionVisualizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FontVisualizer\FontVisualizer.csproj">
+      <Project>{CFDF7705-594B-430E-A10C-3E213F04BC7F}</Project>
+      <Name>FontVisualizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageVisualizer\ImageVisualizer.csproj">
+      <Project>{0C1A8D76-6B8F-4E42-885F-91AAF8A31272}</Project>
+      <Name>ImageVisualizer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StringVisualizer\StringVisualizer.csproj">
+      <Project>{9DDF3DE5-E38B-4ED2-B5C0-F5F8EFA8FA4A}</Project>
+      <Name>StringVisualizer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

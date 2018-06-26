@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9DDF3DE5-E38B-4ED2-B5C0-F5F8EFA8FA4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StringVisualizer</RootNamespace>
+    <AssemblyName>StringVisualizer</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Out\debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Out\release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Htmls\HtmlViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Htmls\HtmlViewer.Designer.cs">
+      <DependentUpon>HtmlViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Jsons\JsonViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Jsons\JsonViewer.Designer.cs">
+      <DependentUpon>JsonViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Jsons\XJson\JsonType.cs" />
+    <Compile Include="Jsons\XJson\XJArray.cs" />
+    <Compile Include="Jsons\XJson\XJObject.cs" />
+    <Compile Include="Jsons\XJson\XJReader.cs" />
+    <Compile Include="Jsons\XJson\XJson.cs" />
+    <Compile Include="Jsons\XJson\XJString.cs" />
+    <Compile Include="Jsons\XJson\XJToken.cs" />
+    <Compile Include="Jsons\XJson\XJValue.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StringForm.Designer.cs">
+      <DependentUpon>StringForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StringVisualizer.cs" />
+    <Compile Include="Xmls\XmlObject.cs" />
+    <Compile Include="Xmls\XmlTreeNode.cs" />
+    <Compile Include="Xmls\XmlViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Xmls\XmlViewer.Designer.cs">
+      <DependentUpon>XmlViewer.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Htmls\HtmlViewer.resx">
+      <DependentUpon>HtmlViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Jsons\JsonViewer.resx">
+      <DependentUpon>JsonViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringForm.resx">
+      <DependentUpon>StringForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Xmls\XmlViewer.resx">
+      <DependentUpon>XmlViewer.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

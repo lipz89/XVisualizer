@@ -1,8 +1,6 @@
 ﻿using System;
 
-using XCommonTest;
-
-namespace Test
+namespace Visualizer.Test
 {
     class Program
     {
@@ -10,10 +8,10 @@ namespace Test
         static void Main(string[] args)
         {
             TestViewer.TestString();
-            //TestViewer.TestExpressionViewer();
-            //TestViewer.TestImageViewer();
-            //TestViewer.TestColor();
-            //TestViewer.TestFont();
+            TestViewer.TestExpressionViewer();
+            TestViewer.TestImageViewer();
+            TestViewer.TestColor();
+            TestViewer.TestFont();
 
             Console.Read();
         }

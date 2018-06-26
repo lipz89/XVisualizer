@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq.Expressions;
-
+using ExpressionVisualizer;
 using Microsoft.VisualStudio.DebuggerVisualizers;
 
 using Newtonsoft.Json;
 
-using XVisualizer;
-using XVisualizer.Expressions;
-using XVisualizer.Images;
-using XVisualizer.Strings;
 
-namespace XCommonTest
+namespace Visualizer.Test
 {
     class TestViewer
     {
@@ -21,7 +17,7 @@ namespace XCommonTest
         {
             var font = new Font("黑体", 36f);
 
-            VisualizerDevelopmentHost visualizerHost = new VisualizerDevelopmentHost(font, typeof(FontVisualizer));
+            VisualizerDevelopmentHost visualizerHost = new VisualizerDevelopmentHost(font, typeof(FontVisualizer.FontVisualizer));
             visualizerHost.ShowVisualizer();
         }
 
@@ -32,7 +28,7 @@ namespace XCommonTest
             var color3 = SystemColors.Control;
             var brush = Brushes.Red;
 
-            VisualizerDevelopmentHost visualizerHost = new VisualizerDevelopmentHost(color, typeof(ColorVisualizer));
+            VisualizerDevelopmentHost visualizerHost = new VisualizerDevelopmentHost(color, typeof(ColorVisualizer.ColorVisualizer));
             visualizerHost.ShowVisualizer();
         }
 
@@ -59,7 +55,7 @@ namespace XCommonTest
                 gp.Flush();
             }
 
-            VisualizerDevelopmentHost visualizerHost = new VisualizerDevelopmentHost(image, typeof(ImageVisualizer));
+            VisualizerDevelopmentHost visualizerHost = new VisualizerDevelopmentHost(image, typeof(ImageVisualizer.ImageVisualizer));
             visualizerHost.ShowVisualizer();
         }
 
@@ -74,17 +70,17 @@ namespace XCommonTest
 
             var js = JsonConvert.SerializeObject(lst);
             js = "{a:{b:1},c:[1,0.5,\"12\"]}";
-            //Console.WriteLine(js.Length);
-            //VisualizerDevelopmentHost visualizerHost = new VisualizerDevelopmentHost(js, typeof(StringVisualizer));
-            //visualizerHost.ShowVisualizer();
+            Console.WriteLine(js.Length);
+            VisualizerDevelopmentHost visualizerHost = new VisualizerDevelopmentHost(js, typeof(StringVisualizer.StringVisualizer));
+            visualizerHost.ShowVisualizer();
 
-            using (StringForm form = new StringForm())
-            {
-                form.SetString(js);
-                form.ShowInTaskbar = false;
+            //using (StringForm form = new StringForm())
+            //{
+            //    form.SetString(js);
+            //    form.ShowInTaskbar = false;
 
-                form.ShowDialog();
-            }
+            //    form.ShowDialog();
+            //}
         }
     }
 }
